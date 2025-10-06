@@ -8,7 +8,7 @@ public class Student extends Person{
     private double grade;
     private ArrayList <Course> courses = new ArrayList<>();
     
-    public Student(){};
+    public Student(){}
 
     public Student(String name, String email, int age, int studentId, double grade){
         setName(name);
@@ -16,11 +16,10 @@ public class Student extends Person{
         setAge(age);
         setStudentId(studentId);
         setGrade(grade);
-
     }
 
     public void setStudentId(int newStudentId){
-        this.studentId = studentId++;
+        this.studentId = newStudentId++;
     }
 
     public void setGrade(double newGrade){
