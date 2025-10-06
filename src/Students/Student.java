@@ -4,13 +4,13 @@ import Persons.*;
 import Courses.*;
 
 public class Student extends Person{
-    private int studentId = 000;
+    private String studentId = UUID.randomUUID().toString();
     private double grade;
     private ArrayList <Course> courses = new ArrayList<>();
     
     public Student(){}
 
-    public Student(String name, String email, int age, int studentId, double grade){
+    public Student(String name, String email, int age, String studentId, double grade){
         setName(name);
         setEmail(email);
         setAge(age);
@@ -18,8 +18,8 @@ public class Student extends Person{
         setGrade(grade);
     }
 
-    public void setStudentId(int newStudentId){
-        this.studentId = newStudentId++;
+    public void setStudentId(String newStudentId){
+        this.studentId = newStudentId;
     }
 
     public void setGrade(double newGrade){
@@ -41,7 +41,7 @@ public class Student extends Person{
         }
     }
 
-    public int getStudentId(){
+    public String getStudentId(){
         return studentId;
     }
 

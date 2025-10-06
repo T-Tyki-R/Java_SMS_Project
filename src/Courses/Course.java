@@ -1,31 +1,34 @@
 package Courses;
+import java.util.*;
 
 public class Course {
     public String courseName;
-    public int courseId = 100;
+    public String courseId = UUID.randomUUID().toString();
 
-    public Course(){};
+    public Course(){}
 
-    public Course(String courseName, int courseId){
+    public Course(String courseName, String courseId){
         setCourseName(courseName);
-        setCourseId();
+        setCourseId(courseId);
     }
 
     public void setCourseName(String newCourseName){
-        if(newCourseName.length() != 0 && newCourseName != null){
+        if(newCourseName != null && newCourseName.length() != 0){
             this.courseName = newCourseName;
+        }else{
+            throw new IllegalArgumentException("Course name must contain only alphabetical characters and spaces");
         }
     }
 
-    public void setCourseId(){
-        this.courseId = courseId++;
+    public void setCourseId(String newCourseId){
+        this.courseId = newCourseId;
     }
 
     public String getCourseName(){
         return courseName;
     }
     
-    public int getCourseId(){
+    public String getCourseId(){
         return courseId;
     }
 }

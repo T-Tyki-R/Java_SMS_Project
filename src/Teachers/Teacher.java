@@ -3,7 +3,7 @@ import java.util.*;
 import Persons.*;
 import Courses.*;
 public class Teacher extends Person {
-     private int teacherId = 000;
+     private String teacherId = UUID.randomUUID().toString();
     private String subject;
     private ArrayList <Course> courses = new ArrayList<>();
 
@@ -16,8 +16,8 @@ public class Teacher extends Person {
         setSubject(subject);
     }
 
-    public void setTeacherId(int newTeacherId){
-        this.teacherId = newTeacherId++;
+    public void setTeacherId(String newTeacherId){
+        this.teacherId = newTeacherId;
     }
 
     public void setSubject(String newSubject){
@@ -39,7 +39,7 @@ public class Teacher extends Person {
         }
     }
 
-    public int getTeacherId(){
+    public String getTeacherId(){
         return teacherId;
     }
 
