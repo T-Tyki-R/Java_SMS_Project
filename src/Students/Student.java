@@ -4,26 +4,30 @@ import Persons.*;
 import Courses.*;
 
 public class Student extends Person{
-    private String studentId = UUID.randomUUID().toString();
+    private static int nextId = 1;
+    private int studentId = 0;
     private double grade;
     private ArrayList <Course> courses = new ArrayList<>();
     
-    public Student(){}
+    public Student(){this.studentId = nextId++;}
 
-    public Student(String name, String email, int age, String studentId, double grade){
+    public Student(String name, String email, int age, double grade){
+        this();
         setName(name);
         setEmail(email);
         setAge(age);
-        setStudentId(studentId);
         setGrade(grade);
     }
 
-    public void setStudentId(String newStudentId){
-        this.studentId = newStudentId;
+    public void setStudentId(int studentId){
+        this.studentId = studentId;
+        if(studentId >= nextId){
+            nextId = studentId + 1;
+        }
     }
 
     public void setGrade(double newGrade){
-        if(newGrade < 0.0 && newGrade > 4.0){
+        if(newGrade >= 0.0 && newGrade <= 4.0){
             this.grade = newGrade;
         }else{
              throw new IllegalArgumentException("Grade must be greater than 0 and less than 5");
@@ -41,7 +45,7 @@ public class Student extends Person{
         }
     }
 
-    public String getStudentId(){
+    public int getStudentId(){
         return studentId;
     }
 

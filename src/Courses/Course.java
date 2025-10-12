@@ -1,15 +1,14 @@
 package Courses;
-import java.util.*;
-
 public class Course {
+    public int nextId = 1;
     public String courseName;
-    public String courseId = UUID.randomUUID().toString();
+    public int courseId = 0;
 
-    public Course(){}
+    public Course(){this.courseId = nextId++;}
 
-    public Course(String courseName, String courseId){
+    public Course(String courseName){
+        this();
         setCourseName(courseName);
-        setCourseId(courseId);
     }
 
     public void setCourseName(String newCourseName){
@@ -20,15 +19,18 @@ public class Course {
         }
     }
 
-    public void setCourseId(String newCourseId){
+    public void setCourseId(int newCourseId){
         this.courseId = newCourseId;
+         if(courseId >= nextId){
+            nextId = courseId + 1;
+        }
     }
 
     public String getCourseName(){
         return courseName;
     }
     
-    public String getCourseId(){
+    public int getCourseId(){
         return courseId;
     }
 }

@@ -3,21 +3,26 @@ import java.util.*;
 import Persons.*;
 import Courses.*;
 public class Teacher extends Person {
-     private String teacherId = UUID.randomUUID().toString();
+    private static int nextId = 1;
+    private int teacherId = 0;
     private String subject;
     private ArrayList <Course> courses = new ArrayList<>();
 
-    public Teacher(){}
+    public Teacher(){this.teacherId = nextId++;}
 
     public Teacher(String name, int age, String email, String subject){
+        this();
         setName(name);
         setAge(age);
         setEmail(email);
         setSubject(subject);
     }
 
-    public void setTeacherId(String newTeacherId){
-        this.teacherId = newTeacherId;
+    public void setTeacherId(int teacherId){
+        this.teacherId = teacherId;
+        if(teacherId >= nextId){
+            nextId = teacherId + 1;
+        }
     }
 
     public void setSubject(String newSubject){
@@ -39,7 +44,7 @@ public class Teacher extends Person {
         }
     }
 
-    public String getTeacherId(){
+    public int getTeacherId(){
         return teacherId;
     }
 
